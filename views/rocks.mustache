@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Rock Collection</title>
+  </head>
+  <body>
+    <h1>My Rocks</h1>
+    <table>
+      <thead>
+        <th>Color</th>
+        <th>Shape</th>
+        <th>Size</th>
+        <th>Type</th>
+        <th>Location</th>
+        <th>Date</th>
+        <th>Id</th>
+      </thead>
+    </table>
+    {{#rocks}}
+    <tr>
+      <td>{{color}}</td>
+      <td>{{shape}}</td>
+      <td>{{sizeInMM}}</td>
+      <td>{{foundLocation: [{{city}}, {{state}}]}}</td>
+      <td>{{foundDate}}</td>
+      <td>{{_id}}</td>
+    </tr>
+    {{/rocks}}
+
+    <h2>New Rock</h2>
+    <form action="/createRock" method=POST>
+      <input type="text" name="color" />
+      <label>Rock color</label>
+      <input type="text" name="shape" />
+      <label>Rock shape</label>
+      <input type="text" name="sizeInMM" />
+      <label>Rock size</label>
+      <input type="text" name="Location.city" />
+      <label>City</label>
+      <input type="text" name="Location.state" />
+      <label>State</label>
+      <input type="date" name="Date" />
+      <label>Date found</label>
+    </form>
+
+    <h2>Update</h2>
+    <form action="/updateRock/:id" method=PATCH>
+      <input type="number" name="id" />
+      <label>Rock ID</label>
+      <input type="text" name="color" />
+      <label>Rock color</label>
+      <input type="text" name="shape" />
+      <label>Rock shape</label>
+      <input type="text" name="sizeInMM" />
+      <label>Rock size</label>
+      <input type="text" name="Location.city" />
+      <label>City</label>
+      <input type="text" name="Location.state" />
+      <label>State</label>
+      <input type="date" name="Date" />
+      <label>Date found</label>
+    </form>
+
+    <h2>Delete</h2>
+    <form action="/deleteRock" method=DELETE>
+      <input type="text" name="id" />
+      <label>Rock ID</label>
+    </form>
+
+
+    <script src="..model/app.js"></script>
+  </body>
+</html>
